@@ -16,14 +16,22 @@
 <h1>Hello {{name}}!</h1>
   <h2>Here is an interesting container for you: </h2>
   <p>
-{{quote['title']}}
+{{c['title']}}
 </p>
 <p>
-{{quote['dimensions']}}
+{{c['dimensions'][0]}}
 </p>
 <p>
-{{quote['url']}}
+{{c['url']}}
   </p>
-{# <img src="http://www.naturalprogramming.com/images/smilingpython.gif">#}
+  <p>
+  {{c['image'][0]}}
+    </p>
+  {# <p>
+    {{c['image'][0].replace("http://","")}}
+  </p>#}
+{# <img src="http://",str(c['image'][0])>#}
+{# <img src="http://",c['image'][0].replace("http://","")>#}
+<img src=c['image'][0]>
 </div>
 {% endblock %}

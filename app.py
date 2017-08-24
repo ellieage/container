@@ -15,10 +15,10 @@ def hello(name):
     json_url = os.path.join(SITE_ROOT, "", "container8.json")
     data = json.load(open(json_url))
 
-    quotes = data
+    # quotes = data
 
-    randomNumber = randint(0,len(quotes)-1)
-    quote = quotes[randomNumber]
+    randomNumber = randint(0,len(data)-1)
+    c = data[randomNumber]
 
     return render_template(
         'test.html',**locals())
