@@ -1,0 +1,30 @@
+Tests:
+
+1. Remove container.json and check that an error occurs:
+ No such file 'container.json'
+
+2. Load container3.json should report that the file is empty
+
+
+
+3.
+
+
+Next:
+
+Specific searches that we know the solution to record so we can check in the future.
+
+
+
+----------------------------
+
+Check this is put somewhere:
+
+
+Black Zig-Zag Play & Go Mat & Toy Storage Bag
+
+55" diam.
+
+https://www.containerstore.com/s/storage/storage-bags-totes/black-zig-zag-play-go-mat-toy-storage-bag/12d?productId=11005980
+
+https://images.containerstore.com//catalogimages/318420/10071203-play-&-go-mat-and-toy-stora.jpg

@@ -7,18 +7,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "My App!"
+    # return "My App!"
 
-@app.route("/hello/<string:name>/")
-def hello(name):
+# @app.route("/hello/<string:name>/")
+# def hello(name):
     SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    json_url = os.path.join(SITE_ROOT, "", "container8.json")
+    json_url = os.path.join(SITE_ROOT, "", "container.json")
     data = json.load(open(json_url))
-
-    # quotes = data
 
     randomNumber = randint(0,len(data)-1)
     c = data[randomNumber]
+    # c = data[0]
+
+    r = randint(0,len(c['dimensions'])-1)
 
     return render_template(
         'test.html',**locals())

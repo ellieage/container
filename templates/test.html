@@ -13,20 +13,34 @@
 {% block body %}
 
 <div class="block1">
-<h1>Hello {{name}}!</h1>
+{# <h1>Hello {{name}}!</h1>#}
   <h2>Here is an interesting container for you: </h2>
   <p>
 {{c['title']}}
 </p>
 <p>
+{# {{c['dimensions'][r]}}#}
 {{c['dimensions'][0]}}
 </p>
 <p>
 {{c['url']}}
   </p>
   <p>
-  {{c['image'][0]}}
+  {{c['image'][0][0]=='h'}}
     </p>
+
+{% if c['image'][0][0]=='h' %}
+  <img src="{{c['image'][0]}}/">
+  <p>{{c['image'][0]}}/</p>
+{% else %}
+<img src="https://www.containerstore.com{{c['image'][0]}}">
+  <p>https://www.containerstore.com{{c['image'][0]}}</p>
+  <p>{{c['image'][0]}}</p>
+{% endif %}
+    <p>
+    {# {{"$"+c['price'][r]}}#}
+    {{"$"+c['price'][0]}}
+      </p>
   {# <p>
     {{c['image'][0].replace("http://","")}}
   </p>#}

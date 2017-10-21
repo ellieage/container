@@ -39,9 +39,9 @@ class ContainerSpider(scrapy.Spider):
         price = response.xpath('//div[@itemprop="price"]/@content').extract()
         if (price==[]):
             price = response.xpath('//meta[@itemprop="price"]/@content').extract()
-        image = response.xpath('//a/@data-retina-modal-image').extract()
-        if (image ==[]):
-            image = [response.xpath('//ul[@class="o-block-list o-block-list--inline"]/@data-image').extract_first()]
+        # image = response.xpath('//a/@data-retina-modal-image').extract()
+        # if (image ==[]):
+        image = [response.xpath('//ul[@class="o-block-list o-block-list--inline"]/@data-image').extract_first()]
 
         yield {
             'url': response.url,
