@@ -183,7 +183,7 @@ class Container:
     def the_perfect_fit_values(self,values,diffmax=2.):
 
         """
-        Searches for cantiners that are closest to the given 3 dimensions, using the 'dimensions' variable,
+        Searches for continers that are closest to the given 3 dimensions, using the 'dimensions' variable,
             created in 'organize_new_dimensions' function (a list of lists of dictionaries containing
             container information).
         Based on whether 0,1,2, or 3 dimensions are given, a different strategy is used.
