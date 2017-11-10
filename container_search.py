@@ -1,16 +1,20 @@
 import json
+# from pprint import pprint
+# from fractions import Fraction
+# from collections import Counter
 import os
+# import sys
 
 class ContainerSearch:
+    # def __init__(self, data, c, dimensions):
+    # def __init__(self, data, c, dimensions):
+    def __init__(self, json_file_name='data_cleaned.json', c_file_name='data_c.json', dim_file_name='data_dim.json'):
 
-
-    # def __init__(self, json_file_name='data_cleaned.json', c_file_name='data_c.json', dim_file_name='data_dim.json'):
-    def __init__(self, data, c, dimensions):
         """
         This class is to be used by the website
         Everything else can be tidied up in the background
 
-        Loads 'data'
+        Loads data_cleaned.json and stores as class variable 'data'
 
         'data' is a list of dictionaries.
             Each dictionary contains the 'title' (name) of the container, its 'url',
@@ -18,19 +22,52 @@ class ContainerSearch:
             and a link to the url of the 'image'.
             Also a list of 'new dimensions' and category, calculated in container_utils.py
 
-
+        Raises:
+            throws exception if the file is not there.(KeyError? IOEXception?)
         """
-        self.data = data
-        self.c = c
-        self.dimensions = dimensions
 
+        if os.path.exists(json_file_name):
+            with open(json_file_name) as data_file:
+                try:
+                     self.data = json.load(data_file)
+                except ValueError:
+                    print("File '{}' is empty.".format(json_file_name))
+                    self.data = []
+        else:
+            print("No such file '{}'".format(json_file_name))
+            self.data = []
 
+        if os.path.exists(c_file_name):
+            with open(c_file_name) as data_file:
+                try:
+                     self.c = json.load(data_file)
+                except ValueError:
+                    print("File '{}' is empty.".format(c_file_name))
+                    self.data = []
+        else:
+            print("No such file '{}'".format(c_file_name))
+            self.data = []
+
+        if os.path.exists(dim_file_name):
+            with open(dim_file_name) as data_file:
+                try:
+                     self.dimensions = json.load(data_file)
+                except ValueError:
+                    print("File '{}' is empty.".format(dim_file_name))
+                    self.data = []
+        else:
+            print("No such file '{}'".format(dim_file_name))
+            self.data = []
+
+        # self.data = data
+        # self.c = c
+        # self.dimensions = dimensions
 
     def the_perfect_fit_ranges(self,ranges):
 
         """
-        Searches for containers that fit in a given range of dimensions, using the 'dimensions' variable,
-            loaded in during __init__ (a list of lists of dictionaries containing
+        Searches for continers that fit in a given range of dimensions, using the 'dimensions' variable,
+            created in 'organize_new_dimensions' function (a list of lists of dictionaries containing
             container information).
         Based on whether 0,1,2, or 3 dimensions are given, a different strategy is used.
 

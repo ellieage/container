@@ -4,6 +4,12 @@ from flask import Flask, flash, redirect, render_template, request, session, abo
 from random import randint
 # import json
 
+my_c = container_search.ContainerSearch()
+data = my_c.data
+c = my_c.c
+dimensions = my_c.dimensions
+
+
 from flask import Flask
 from flask import request
 from flask import render_template
@@ -20,15 +26,15 @@ def index():
 
 # @app.route("/hello/<string:name>/")
 # def hello(name):
-    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    json_url = os.path.join(SITE_ROOT, "", "data_cleaned.json")
-    data = json.load(open(json_url))
-    c_url = os.path.join(SITE_ROOT, "", "data_c.json")
-    c = json.load(open(c_url))
-    c_url = os.path.join(SITE_ROOT, "", "data_c.json")
-    c = json.load(open(c_url))
-    dim_url = os.path.join(SITE_ROOT, "", "data_dim.json")
-    dimensions = json.load(open(dim_url))
+    # SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    # json_url = os.path.join(SITE_ROOT, "", "data_cleaned.json")
+    # data = json.load(open(json_url))
+    # c_url = os.path.join(SITE_ROOT, "", "data_c.json")
+    # c = json.load(open(c_url))
+    # c_url = os.path.join(SITE_ROOT, "", "data_c.json")
+    # c = json.load(open(c_url))
+    # dim_url = os.path.join(SITE_ROOT, "", "data_dim.json")
+    # dimensions = json.load(open(dim_url))
 
 
 
@@ -45,20 +51,20 @@ def index():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-    SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
-    json_url = os.path.join(SITE_ROOT, "", "data_cleaned.json")
-    data = json.load(open(json_url))
-    c_url = os.path.join(SITE_ROOT, "", "data_c.json")
-    c = json.load(open(c_url))
-    c_url = os.path.join(SITE_ROOT, "", "data_c.json")
-    c = json.load(open(c_url))
-    dim_url = os.path.join(SITE_ROOT, "", "data_dim.json")
-    dimensions = json.load(open(dim_url))
+    # SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+    # json_url = os.path.join(SITE_ROOT, "", "data_cleaned.json")
+    # data = json.load(open(json_url))
+    # c_url = os.path.join(SITE_ROOT, "", "data_c.json")
+    # c = json.load(open(c_url))
+    # c_url = os.path.join(SITE_ROOT, "", "data_c.json")
+    # c = json.load(open(c_url))
+    # dim_url = os.path.join(SITE_ROOT, "", "data_dim.json")
+    # dimensions = json.load(open(dim_url))
 
-    my_c = container_search.ContainerSearch(data, c, dimensions)
-    l = request.form['text']
-    w = request.form['text2']
-    h = request.form['text3']
+    # my_c = container_search.ContainerSearch(data, c, dimensions)
+    l = str(request.form['text'])
+    w = str(request.form['text2'])
+    h = str(request.form['text3'])
     values=[float(l),float(w),float(h)]
     pf = my_c.the_perfect_fit_values(values,2.)
     possibles = pf[3]
