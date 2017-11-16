@@ -11,7 +11,7 @@ class Container:
     def __init__(self, json_file_name='container.json'):
 
         """
-        Loads container.json and stores as global(?) variable 'data'
+        Loads container.json and stores as variable 'data'
 
         'data' is a list of dictionaries.
             Each dictionary contains the 'title' (name) of the container, its 'url',
@@ -21,7 +21,7 @@ class Container:
                     - the ones that have only 2 dimensions(?))
 
         Raises:
-            throws exception if the file is not there.(KeyError? IOEXception?)
+            throws exception if the file is not there.
         """
 
         if os.path.exists(json_file_name):

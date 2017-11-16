@@ -15,11 +15,11 @@
 <div class="block1">
 
   <h2>Search for a container that fits your space:</h2>
-      <h1>(type in the length, width, and height of the container)</h1>
+      <h1>(type in the length, width, and height (in inches) of the container)</h1>
       <form action="." method="POST">
-          <input type="number" name="text">
-          <input type="number" name="text2">
-          <input type="number" name="text3">
+          <input type="text" name="text">
+          <input type="text" name="text2">
+          <input type="text" name="text3">
           <input type="submit" name="my-form" value="Send">
       </form>
 
@@ -28,7 +28,7 @@
 <br><br>
   <h2>Need some inspiration?</h2>
   <h1>
-    
+
     Here is an interesting container for you:
     <a href="{{c['url']}}">
       {{c['title']}}</a>

@@ -13,16 +13,11 @@ class ContainerSpider(scrapy.Spider):
     def parse(self, response):
         types = response.xpath('//ul[@class="filter-options three-col-options"]/descendant::a/@href').extract()
         for t in types:
-            # print('--------------------------------------------')
-            # print('t: ', t)
-            # print('--------------------------------------------')
             yield response.follow(t, self.parse_type)
 
     def parse_type(self, response):
         for href in response.css('.product a::attr(href)'):
-            # print('--------------------------------------------')
-            # print('parse_type href: ', href)
-            # print('--------------------------------------------')
+
             yield response.follow(href, self.parse_container)
 
         # follow pagination links

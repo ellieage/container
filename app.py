@@ -2,7 +2,7 @@ import os
 import container_search
 from flask import Flask, flash, redirect, render_template, request, session, abort, json
 from random import randint
-# import json
+
 
 my_c = container_search.ContainerSearch()
 data = my_c.data
@@ -20,10 +20,10 @@ from flask import render_template
 app = Flask(__name__)
 
 
-@app.route('/hello/')
-@app.route('/hello/<name>')
-def hello(name=None):
-    return render_template('results.html', name=name)
+# @app.route('/hello/')
+# @app.route('/hello/<name>')
+# def hello(name=None):
+#     return render_template('results.html', name=name)
 
 
 @app.route("/")
@@ -53,9 +53,7 @@ def my_form_post():
     pf = my_c.the_perfect_fit_values(values,2.)
     possibles = pf[3]
     possibles_text = 'There are '+str(len(possibles))+ ' containers that will fit your space: '+ str(values[0])+'" x '+ str(values[1])+'" x '+ str(values[2])+'"'
-    # print('')
-    # for c in possibles:
-    #     possibles_text+='<br> <a href='+str(c[0]['url'])+'>'+str(c[0]['title']) + ", '"+str(c[0]['category'])+ "'" +'<br>' +str(c[0]['dimensions'][c[1]])+'<br>'  +'<img src="'+str(c[0]['image'][0])+'/">' +'</a>' #+str(c[0]['price'][c[1]])+'<br>'
+
 
     return render_template('results.html',**locals())
 
@@ -64,5 +62,5 @@ def my_form_post():
     # return possibles_text
 
 if __name__ == "__main__":
-    # app.run(host='0.0.0.0', port=80)
-    app.run()
+    app.run(host='0.0.0.0', port=80)
+    # app.run()
