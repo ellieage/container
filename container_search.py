@@ -133,15 +133,27 @@ class ContainerSearch:
 
             # d[0] = dictionary
             # d[1] = place in the list of dimensions/prices
+            temp = []
             while (diff<=diffmax or len(pf[3])<10):
                 for d in self.dimensions[3]:
+                    e1 = abs(values[0]-d[0]['new dimensions'][d[1]][0])
+                    e2 = abs(values[1]-d[0]['new dimensions'][d[1]][1])
+                    e3 = abs(values[2]-d[0]['new dimensions'][d[1]][2])
+                    error = e1+e2+e3
 
-                    if ((abs(values[0]-d[0]['new dimensions'][d[1]][0])<=diff) and (abs(values[1]-d[0]['new dimensions'][d[1]][1])<=diff)
-                    and (abs(values[2]-d[0]['new dimensions'][d[1]][2])<=diff)):
-
+                    if ((e1 <= diff) and (e2 <= diff)
+                    and (e3 <= diff)):
                         if (d not in pf[3]):
 
-                            pf[3].append(d)
+                            temp.append((d,error))
+
+                        # if (d not in pf[3]):
+                        #
+                        #     pf[3].append(d)
+                print(len(temp))
+                temp.sort(key=lambda x: x[1])
+                for t in temp:
+                    pf[3].append(t[0])
 
                 diff+=.1
 

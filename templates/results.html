@@ -14,11 +14,11 @@
   {% if ((p[0]['price'])|length<=p[1]) %}
 
   {% else %}
-  {# &nbsp    -   &nbsp  #}
+  &nbsp    -   &nbsp
   ${{p[0]['price'][p[1]]}}
   {% endif %}
 
-  {# <br><br>{{p[0]['new dimensions'][p[1]][0]}}" x {{p[0]['new dimensions'][p[1]][1]}}" x {{p[0]['new dimensions'][p[1]][2]}}"#}
+  <br><br>{{p[0]['new dimensions'][p[1]][0]}}" x {{p[0]['new dimensions'][p[1]][1]}}" x {{p[0]['new dimensions'][p[1]][2]}}"
   <br><br> {{p[0]['dimensions text'][p[1]]}}
 
 {% endfor %}
