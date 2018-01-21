@@ -101,6 +101,7 @@ class ContainerClean_conStore:
         # loop through the container links
         for j in range (0,len(self.data)):
             self.data[j]['new dimensions']=[]
+            self.data[j]['dimensions text']=self.data[j]['dimensions']
             # many container links have containers available in several different sizes, so we roam through each one
             for k in range(0,len(self.data[j]['dimensions'])):
                 dim_no_whitespace = self.data[j]['dimensions'][k].strip()
@@ -137,6 +138,7 @@ class ContainerClean_conStore:
 
         with open('containerClean_conStore.json', 'w') as outfile:
             json.dump(self.data, outfile)
+        print('containerClean_conStore.json written.')
 
 
 def convertImproperFractions(improperFraction):
@@ -196,16 +198,28 @@ class ContainerClean_ikea:
             self.data = []
 
     def create_new_dimensions(self):
+
         dim_strings=['Length','Width','Height','Depth']
 
         for j in range(0,len(self.data)):
             self.data[j]['new dimensions']=[]
+            self.data[j]['dimensions text'] = []
             if any(s in k for k in self.data[j]['dimensions'] for s in dim_strings):
                 newdim = []
+                newtext = ''
                 for i in range(0,len(self.data[j]['dimensions'])):
+
                     dim_no_whitespace = self.data[j]['dimensions'][i].strip()
+                    # print(dim_no_whitespace)
+                    # newtext.append(dim_no_whitespace)
                     if any(s in dim_no_whitespace for s in dim_strings):
+
+                        text = dim_no_whitespace.split(':')[1]
+                        if newtext != '':
+                            newtext+=' x '
+                        newtext+=text
                         whole_frac = dim_no_whitespace.split(':')[1].split()
+
                         whole = float(whole_frac[0])
                         if (len(whole_frac)==3):
                             frac=0.
@@ -223,6 +237,7 @@ class ContainerClean_ikea:
                             newdim.append(whole+frac)
                         elif (len(whole_frac)==2):
                             newdim.append(whole)
+                self.data[j]['dimensions text'].append(newtext)
                 self.data[j]['new dimensions'].append(newdim)
             else:
                 for i in range(0,len(self.data[j]['dimensions'])):
@@ -240,6 +255,7 @@ class ContainerClean_ikea:
 
         with open('containerClean_ikea.json', 'w') as outfile:
             json.dump(self.data, outfile)
+        print('containerClean_ikea.json written.')
 
 
 
@@ -288,6 +304,8 @@ class Container_Aggregate:
 
             json.dump(self.data_conStore + self.data_ikea, outfile)
 
+        print('container_agg.json written')
+
 
 
 
@@ -326,7 +344,7 @@ class Container_Organize:
                 in emergency.  I am concered that storing everything may be unnecessary and take up too much
                 storage if the data set is really big.)
 
-          
+
         """
 
         self.dimensions = [[],[],[],[],[]] #stores zero, one, two, three, four dimensions
@@ -349,3 +367,4 @@ class Container_Organize:
 
         with open('container_org.json', 'w') as outfile:
             json.dump(self.dimensions, outfile)
+        print('container_org.json written.')
