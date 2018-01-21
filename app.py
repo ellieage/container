@@ -51,7 +51,7 @@ def my_form_post():
     w = request.form['text2']
     h = request.form['text3']
     values=[float(l),float(w),float(h)]
-    pf = my_c.the_perfect_fit_values(values,2.)
+    pf = my_c.the_perfect_fit_values(values,0.1)
     possibles = pf[0][3]
     possibles_text = 'There are '+str(len(possibles))+ ' containers that are within '+ str(pf[1])+ '\" of your space: '+ str(values[0])+'" x '+ str(values[1])+'" x '+ str(values[2])+'"'
     # dimensions_text = str(Fraction(p[0]['new dimensions'][p[1]][0])) + 'x'

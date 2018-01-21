@@ -25,3 +25,12 @@ Doesn't collect all the prices: https://www.containerstore.com/s/garage/storage-
 I think I should look at: div class="product-price__display h1 js-collection-item-price"
 
 Deal with IKEA 4 dimensions
+
+
+
+Duplicates!!!!
+
+
+
+707
+102

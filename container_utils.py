@@ -49,6 +49,10 @@ class ContainerClean_conStore:
         else:
             print("No such file '{}'".format(json_file_name), file=sys.stderr)
             self.data = []
+        # Remove duplicates
+
+        # self.data = [i for n, i in enumerate(self.data) if i not in self.data[n + 1:]]
+
 
 
     def create_category(self):
@@ -299,6 +303,7 @@ class Container_Aggregate:
         else:
             print("No such file '{}'".format(json_ikea), file=sys.stderr)
             self.data_ikea = []
+
 
         with open('container_agg.json', 'w') as outfile:
 

@@ -4,6 +4,7 @@ import json
 # from collections import Counter
 import os
 # import sys
+from pprint import pprint
 
 class ContainerSearch:
     # def __init__(self, data, c, dimensions):
@@ -133,8 +134,9 @@ class ContainerSearch:
 
             # d[0] = dictionary
             # d[1] = place in the list of dimensions/prices
-            temp = []
+
             while (diff<=diffmax or len(pf[3])<10):
+                temp = []
                 for d in self.dimensions[3]:
                     e1 = abs(values[0]-d[0]['new dimensions'][d[1]][0])
                     e2 = abs(values[1]-d[0]['new dimensions'][d[1]][1])
@@ -143,6 +145,8 @@ class ContainerSearch:
 
                     if ((e1 <= diff) and (e2 <= diff)
                     and (e3 <= diff)):
+                        # pprint(d)
+                        # print (d not in pf[3])
                         if (d not in pf[3]):
 
                             temp.append((d,error))
@@ -150,8 +154,12 @@ class ContainerSearch:
                         # if (d not in pf[3]):
                         #
                         #     pf[3].append(d)
-                # print(len(temp))
+
                 temp.sort(key=lambda x: x[1])
+                # print('\n')
+                # print(diff)
+                # pprint(temp)
+
                 for t in temp:
                     pf[3].append(t[0])
 
