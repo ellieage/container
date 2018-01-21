@@ -150,7 +150,7 @@ class ContainerSearch:
                         # if (d not in pf[3]):
                         #
                         #     pf[3].append(d)
-                print(len(temp))
+                # print(len(temp))
                 temp.sort(key=lambda x: x[1])
                 for t in temp:
                     pf[3].append(t[0])
