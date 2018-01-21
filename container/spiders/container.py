@@ -37,6 +37,7 @@ class ContainerSpider(scrapy.Spider):
         # image = response.xpath('//a/@data-retina-modal-image').extract()
         # if (image ==[]):
         image = [response.xpath('//ul[@class="o-block-list o-block-list--inline"]/@data-image').extract_first()]
+        # image = [response.xpath('//ul[@class="o-block-list o-block-list--inline"]/@data-image').extract_first()]+'/'
 
         yield {
             'url': response.url,

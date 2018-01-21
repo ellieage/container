@@ -8,12 +8,28 @@
 
 {% for p in possibles %}
 
-  <br>
+  <br><br>
+  {# {{p[0]['image'][0]}}#}
+  <br><br><img src="{{p[0]['image'][0]}}"></img><br>
   <a href="{{p[0]['url']}}">{{p[0]['title']}}</a>
-  <br>{{p[0]['category']}}
-  <br>{{p[0]['dimensions'][0]}}
-  <br><img src="{{p[0]['image'][0]}}/"></img>
-  <br>${{p[0]['price'][0]}}
+  {% if ((p[0]['price'])|length<=p[1]) %}
+
+  {% else %}
+  &nbsp    -   &nbsp  ${{p[0]['price'][p[1]]}}
+  {% endif %}
+  {# <br>{{p[0]['category']}}#}
+  {# <br>{{p[0]['dimensions']}}#}
+  <br><br>{{p[0]['new dimensions'][p[1]][0]}}" x {{p[0]['new dimensions'][p[1]][1]}}" x {{p[0]['new dimensions'][p[1]][2]}}"
+  {# <br>{{p[1]}}#}
+
+  {# <br>{{(p[0]['price'])|length}}
+  <br>{{(p[0]['price'])}}#}
+  {# {% if ((p[0]['price'])|length<=p[1]) %}
+  <br>
+  {% else %}
+  <br>${{p[0]['price'][p[1]]}}
+  {% endif %}#}
+
 {% endfor %}
 
 </div>

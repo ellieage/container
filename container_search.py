@@ -8,8 +8,8 @@ import os
 class ContainerSearch:
     # def __init__(self, data, c, dimensions):
     # def __init__(self, data, c, dimensions):
-    def __init__(self, json_file_name='data_cleaned.json', c_file_name='data_c.json', dim_file_name='data_dim.json'):
-
+    # def __init__(self, json_file_name='data_cleaned.json', c_file_name='data_c.json', dim_file_name='data_dim.json'):
+    def __init__(self, json_file_name='container_agg.json', dim_file_name='container_org.json'):
         """
         This class is to be used by the website
         Everything else can be tidied up in the background
@@ -36,17 +36,17 @@ class ContainerSearch:
         else:
             print("No such file '{}'".format(json_file_name))
             self.data = []
-
-        if os.path.exists(c_file_name):
-            with open(c_file_name) as data_file:
-                try:
-                     self.c = json.load(data_file)
-                except ValueError:
-                    print("File '{}' is empty.".format(c_file_name))
-                    self.data = []
-        else:
-            print("No such file '{}'".format(c_file_name))
-            self.data = []
+        #
+        # if os.path.exists(c_file_name):
+        #     with open(c_file_name) as data_file:
+        #         try:
+        #              self.c = json.load(data_file)
+        #         except ValueError:
+        #             print("File '{}' is empty.".format(c_file_name))
+        #             self.c = []
+        # else:
+        #     print("No such file '{}'".format(c_file_name))
+        #     self.c = []
 
         if os.path.exists(dim_file_name):
             with open(dim_file_name) as data_file:
@@ -54,14 +54,11 @@ class ContainerSearch:
                      self.dimensions = json.load(data_file)
                 except ValueError:
                     print("File '{}' is empty.".format(dim_file_name))
-                    self.data = []
+                    self.dimensions = []
         else:
             print("No such file '{}'".format(dim_file_name))
-            self.data = []
+            self.dimensions = []
 
-        # self.data = data
-        # self.c = c
-        # self.dimensions = dimensions
 
     def the_perfect_fit_ranges(self,ranges):
 
@@ -122,29 +119,30 @@ class ContainerSearch:
             values: a list of 3 floats, one for each dimension
             diffmax: an upper bound on the error of the dimensions
         Returns:
-            possibles: a list of 4 lists of dictionaries of containers that might work.
-                The 4 lists correspond to containers with 0,1,2, or 3 dimensions found.
+            pf: a list of 5 lists of dictionaries of containers that might work.
+                The 5 lists correspond to containers with 0,1,2, or 3, or 4 dimensions found.
         """
 
         if len(values)==3:
 
-            possibles = [[],[],[],[]]
+            pf = [[],[],[],[],[]]
 
-            possibles[0]=self.dimensions[0]
+            pf[0]=self.dimensions[0]
 
-            diff = 0.5
+            diff = 0.1
 
-
-            while diff<=diffmax:
+            # d[0] = dictionary
+            # d[1] = place in the list of dimensions/prices
+            while (diff<=diffmax or len(pf[3])<10):
                 for d in self.dimensions[3]:
 
                     if ((abs(values[0]-d[0]['new dimensions'][d[1]][0])<=diff) and (abs(values[1]-d[0]['new dimensions'][d[1]][1])<=diff)
                     and (abs(values[2]-d[0]['new dimensions'][d[1]][2])<=diff)):
 
-                        if (d not in possibles[3]):
+                        if (d not in pf[3]):
 
-                            possibles[3].append(d)
+                            pf[3].append(d)
 
-                diff+=.5
+                diff+=.1
 
-            return possibles
+            return [pf,diff]
