@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://v4-alpha.getbootstrap.com/examples/album/# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
+
+    <title>Clevr Fitr</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/styles/main.css" rel="stylesheet">
+  <style></style></head>
+
+  <body>
+
+    <div class="collapse bg-inverse" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          </div>
+          <div class="col-sm-4 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://v4-alpha.getbootstrap.com/examples/album/#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="https://v4-alpha.getbootstrap.com/examples/album/#" class="text-white">Like on Facebook</a></li>
+              <li><a href="https://v4-alpha.getbootstrap.com/examples/album/#" class="text-white">Email me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-inverse bg-inverse">
+      <div class="container d-flex justify-content-between">
+        <a href="https://v4-alpha.getbootstrap.com/examples/album/#" class="navbar-brand">Clevr Fitr</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Clevr Fitr: Get Organized!</h1>
+        <p class="lead text-muted">Find the right bins and baskets to fit <strong>your</strong> space.  Cleverly search containers by size and you will get the perfect fit every time.</p>
+
+        <div class="container">
+
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Change Search Dimensions</button>
+          <div id="demo" class="collapse">
+            <form action="." method="POST">
+                length: <input type="text" name="length"> inches <br>
+                width: <input type="text" name="width"> inches <br>
+                height: <input type="text" name="height"> inches <br>
+                <input type="submit" name="my-form" value="Send">
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="album text-muted">
+      <div class="container">
+
+        <div class="row">
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[0]['image'][0]}}/">
+
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[1]['image'][0]}}/">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[2]['image'][0]}}/">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[3]['image'][0]}}/">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[4]['image'][0]}}/">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[5]['image'][0]}}/">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[6]['image'][0]}}/">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[7]['image'][0]}}/">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{c[8]['image'][0]}}/">
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="./index.html">Back to top</a>
+        </p>
+
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Album example for Bootstrap_files/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="./Album example for Bootstrap_files/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="./Album example for Bootstrap_files/holder.min.js"></script>
+    <script>
+      $(function () {
+        Holder.addTheme("thumb", { background: "#55595c", foreground: "#eceeef", text: "Thumbnail" });
+      });
+    </script>
+    <script src="./Album example for Bootstrap_files/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./Album example for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="216" height="280" viewBox="0 0 216 280" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="14" style="font-weight:bold;font-size:14pt;font-family:Arial, Helvetica, Open Sans, sans-serif">216x280</text></svg></body></html>

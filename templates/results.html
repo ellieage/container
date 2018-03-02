@@ -1,27 +1,177 @@
-<!doctype html>
-{% extends "layout.html" %}
-{% block body %}
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://v4-alpha.getbootstrap.com/examples/album/# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<div class="block1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
 
-<h1>{{possibles_text}}</h1>
+    <title>Clevr Fitr</title>
 
-{% for p in possibles %}
+    <!-- Bootstrap core CSS -->
+    <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <br><br>
-  <br><br><img src="{{p[0]['image'][0]}}"></img><br>
-  <a href="{{p[0]['url']}}">{{p[0]['title']}}</a>
-  {% if ((p[0]['price'])|length<=p[1]) %}
+    <script src="../static/docs/assets/js/vendor/jquery-slim.min.js"></script>
+    <script src="../static/dist/js/bootstrap.min.js"></script>
 
-  {% else %}
-  &nbsp    -   &nbsp
-  ${{p[0]['price'][p[1]]}}
-  {% endif %}
+    <!-- Custom styles for this template -->
+    <link href="../static/styles/main.css" rel="stylesheet">
+  <style></style></head>
 
-  {# <br><br>{{p[0]['new dimensions'][p[1]][0]}}" x {{p[0]['new dimensions'][p[1]][1]}}" x {{p[0]['new dimensions'][p[1]][2]}}"#}
-  <br><br> {{p[0]['dimensions text'][p[1]]}}
+  <body>
 
-{% endfor %}
+    <div class="collapse bg-inverse" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          </div>
+          <div class="col-sm-4 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://v4-alpha.getbootstrap.com/examples/album/#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="https://v4-alpha.getbootstrap.com/examples/album/#" class="text-white">Like on Facebook</a></li>
+              <li><a href="https://v4-alpha.getbootstrap.com/examples/album/#" class="text-white">Email me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-inverse bg-inverse">
+      <div class="container d-flex justify-content-between">
+        <a href="./" class="navbar-brand">Clevr Fitr</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
 
-</div>
-{% endblock %}
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Clevr Fitr</h1>
+        <p class="lead text-muted">{{text}}</p>
+
+        <div class="container">
+
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#dimension_search">Change Search Dimensions</button>
+          <br>
+
+          <div id="dimension_search" class="collapse">
+
+            <br>
+          <form action="." method="POST">
+            <table align="center" cellpadding = "2">
+              <tr>
+                <td>Length:</td>
+                <td><input type="text" name="length" value={{l}}></td>
+                <td>inches <br></td>
+              </tr>
+              <tr>
+                <td>Width: </td>
+                <td><input type="text" name="width" value={{w}}></td>
+                <td>inches <br></td>
+              </tr>
+              <tr>
+                <td>Height:</td>
+                <td><input type="text" name="height" value={{h}}></td>
+                <td>inches <br></td>
+              </tr>
+            </table>
+
+              <input type="submit" name="my-form" value="Send">
+          </form>
+        </div>
+          <!-- <div id="dimension_search" class="collapse">
+            <form action="." method="POST">
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  Length:
+                </div>
+                <div class="col-md-3 mb-3">
+                  <input type="text" name="length" class="form-control" placeholder = "{{l}}"> inches <br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  Width:
+                </div>
+                <div class="col-md-3 mb-3">
+                  <input type="text" name="width" class="form-control" placeholder = "{{w}}"> inches <br>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  Height:
+                </div>
+                <div class="col-md-3 mb-3">
+                  <input type="text" name="height" class="form-control" placeholder = "{{h}}"> inches <br>
+                <input type="submit" name="my-form" value="Send">
+              </div>
+            </div>
+            </form>
+          </div> -->
+
+        </div>
+
+
+
+      </div>
+    </section>
+
+    <div class="album text-muted">
+      <div class="container">
+
+        <div class="row">
+          {% for p in possibles %}
+          <div class="card">
+            <img class="img-fluid" alt="100%x280"  src="{{p[0]['image'][0]}}">
+
+            <p class="card-text" align="center">
+              <a href="{{p[0]['url']}}">{{p[0]['title']}}</a>
+            {% if ((p[0]['price'])|length<=p[1]) %}
+
+            {% else %}
+            &nbsp    -   &nbsp
+            ${{p[0]['price'][p[1]]}}
+            {% endif %}
+
+            {# <br><br>{{p[0]['new dimensions'][p[1]][0]}}" x {{p[0]['new dimensions'][p[1]][1]}}" x {{p[0]['new dimensions'][p[1]][2]}}"#}
+            <br><br> {{p[0]['dimensions text'][p[1]]}}
+          </p>
+          </div>
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </div>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Album example for Bootstrap_files/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="./Album example for Bootstrap_files/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="./Album example for Bootstrap_files/holder.min.js"></script>
+    <script>
+      $(function () {
+        Holder.addTheme("thumb", { background: "#55595c", foreground: "#eceeef", text: "Thumbnail" });
+      });
+    </script>
+    <script src="./Album example for Bootstrap_files/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./Album example for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="216" height="280" viewBox="0 0 216 280" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="14" style="font-weight:bold;font-size:14pt;font-family:Arial, Helvetica, Open Sans, sans-serif">216x280</text></svg></body></html>

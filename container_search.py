@@ -115,6 +115,7 @@ class ContainerSearch:
         Based on whether 0,1,2, or 3 dimensions are given, a different strategy is used.
         Currently only looking at containers with 3 dimensions given:
             looks for boxes with each dimension within .5", then 1", so on until the given upper bound.
+            Or until the search has not been found to be empty
 
         Args:
             values: a list of 3 floats, one for each dimension
@@ -137,6 +138,19 @@ class ContainerSearch:
 
             while (diff<=diffmax or len(pf[3])<10):
                 temp = []
+                # if len(pf[3])>3:
+                #     print('\n first two equal?')
+                #     print(pf[3][0][0]['title'])
+                #     print(pf[3][1][0]['title'])
+                #     print(pf[3][0][0]['title']==pf[3][1][0]['title'])
+                #     print('\n first and third?')
+                #     print(pf[3][0][0]['title'])
+                #     print(pf[3][2][0]['title'])
+                #     print(pf[3][0][0]['title']==pf[3][2][0]['title'])
+                #     print('\n second and third equal?')
+                #     print(pf[3][1][0]['title'])
+                #     print(pf[3][2][0]['title'])
+                #     print(pf[3][1][0]['title']==pf[3][2][0]['title'])
                 for d in self.dimensions[3]:
                     e1 = abs(values[0]-d[0]['new dimensions'][d[1]][0])
                     e2 = abs(values[1]-d[0]['new dimensions'][d[1]][1])
@@ -147,15 +161,31 @@ class ContainerSearch:
                     and (e3 <= diff)):
                         # pprint(d)
                         # print (d not in pf[3])
-                        if (d not in pf[3]):
+                        # if (d not in pf[3]):
+                            # also check the title is not already there.
+                        # if all(d[0]['title'] != x[0]['title'] for x in pf[3]) and all(d[0]['title'] != x[0][0]['title'] for x in temp):
+                        # if ((d not in pf[3]) and all(d[0] != x[0][0] for x in temp)):
+                        if (all(d[0]['image'] != x[0]['image'] for x in pf[3])
+                        and all(d[0]['image'] != x[0][0]['image'] for x in temp)):
+                            # print('\n', d[0]['title'], '\n', all((d[0]['title'] != x[0]['title']) for x in pf[3]))
+                            # for x in temp:
+                            #     print(x[0][0][title])
+                            # print(all(d[0]['title'] != x[0][0]['title'] for x in temp))
 
                             temp.append((d,error))
+                            # for x in pf[3]:
+                            #     print(d[0]['title'] == x[0]['title'], ' , ', x[0]['title'], ' , ', d[0]['title'])
+
+                            # print(d[0]['title'])
+
 
                         # if (d not in pf[3]):
                         #
                         #     pf[3].append(d)
 
                 temp.sort(key=lambda x: x[1])
+                # print(temp)
+                # print(pf[3])
                 # print('\n')
                 # print(diff)
                 # pprint(temp)

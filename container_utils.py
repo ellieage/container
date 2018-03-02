@@ -352,7 +352,7 @@ class Container_Organize:
 
         """
 
-        self.dimensions = [[],[],[],[],[]] #stores zero, one, two, three, four dimensions
+        self.dimensions = [[],[],[],[],[],[]] #stores zero, one, two, three, four dimensions
 
         for j in range(0,len(self.data)):
             if((self.data[j]['new dimensions'])==[]):
@@ -361,8 +361,9 @@ class Container_Organize:
             for k in range(0,num_of_containers):
                 num_dim = len(self.data[j]['new dimensions'][k])
 
-
+                # print(num_dim,j,k)
                 #save the container and the spot that has these particular dimensions
+                
                 self.dimensions[num_dim].append([self.data[j],k])
 
     def write_file(self):
