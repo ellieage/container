@@ -43,3 +43,6 @@ http://www.ikea.com/us/en/catalog/products/30300281/
 http://www.ikea.com/us/en/catalog/products/70323959/
 Scubb box is not showing different colors: perhaps use for 'title':
 <SPAN class="displaynone" id="schemaProductName" itemprop="name">SKUBB Box, set of 6, light blue</SPAN>want to include different items named the same if the picture is different and the web address is different?
+
+
+permute l/w/h
