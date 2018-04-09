@@ -1,6 +1,0 @@
-4 dt messed up:
-
-empty 
-long
-short
-letters

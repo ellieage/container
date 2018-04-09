@@ -1,2 +1,0 @@
-select count(*) from actor join casting on actorid = actor.id 
-where actor.id=179

@@ -265,8 +265,9 @@ class ContainerClean_ikea:
 
 
 
+
 class Container_Aggregate:
-    def __init__(self, json_conStore='containerClean_conStore.json', json_ikea='containerClean_ikea.json'):
+    def __init__(self, json_conStore='containerClean_conStore.json', json_ikea='containerClean_ikea.json', json_amazon='container_amazon.json'):
 
         """
         Loads containerClean_conStore.json and stores as variable 'data_conStore'
@@ -298,16 +299,25 @@ class Container_Aggregate:
                     print("File '{}' is empty.".format(json_ikea), file=sys.stderr)
                     self.data_ikea = []
 
-            # with open('container.json', 'r') as f:
-            #     self.data = json.load(f)
         else:
             print("No such file '{}'".format(json_ikea), file=sys.stderr)
             self.data_ikea = []
 
+        if os.path.exists(json_amazon):
+            with open(json_amazon) as data_amazon:
+                try:
+                     self.data_amazon = json.load(data_amazon)
+                except ValueError:
+                    print("File '{}' is empty.".format(json_amazon), file=sys.stderr)
+                    self.data_amazon = []
+
+        else:
+            print("No such file '{}'".format(json_ikea), file=sys.stderr)
+            self.data_ikea = []
 
         with open('container_agg.json', 'w') as outfile:
 
-            json.dump(self.data_conStore + self.data_ikea, outfile)
+            json.dump(self.data_conStore + self.data_ikea+ self.data_amazon, outfile)
 
         print('container_agg.json written')
 
@@ -363,7 +373,7 @@ class Container_Organize:
 
                 # print(num_dim,j,k)
                 #save the container and the spot that has these particular dimensions
-                
+
                 self.dimensions[num_dim].append([self.data[j],k])
 
     def write_file(self):
