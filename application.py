@@ -19,7 +19,7 @@ from flask import render_template
 
 
 
-app = Flask(__name__)
+application = app = Flask(__name__)
 
 bootstrap = Bootstrap(app)
 
